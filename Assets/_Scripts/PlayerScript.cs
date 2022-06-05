@@ -27,6 +27,10 @@ public class PlayerScript : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     void Update()
     {
         isGrounded = Physics.CheckSphere(grounded.position, groundDistance, groundMask);
