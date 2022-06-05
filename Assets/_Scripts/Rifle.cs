@@ -17,7 +17,7 @@ public class Rifle : MonoBehaviour
     [Header("Rifle shooting and ammunitition")]
     private int maxAmmo = 32;
     public int mag = 10;
-    private int currentAmmo;
+    public int currentAmmo;
     public float reloadTime = 1.3f;
     private bool isReloading = false;
 
@@ -59,7 +59,9 @@ public class Rifle : MonoBehaviour
             {
             anim.SetBool("Idle", false);
             anim.SetBool("IdleAim", true);
-            anim.SetBool("FireWalk", false);
+            anim.SetBool("FireWalk", true);
+            anim.SetBool("Walk", true);
+            anim.SetBool("Reloading", false);
         }
         else
         {
@@ -107,11 +109,10 @@ public class Rifle : MonoBehaviour
         Debug.Log("Reloading");
 
         anim.SetBool("Reloading", true);
-        //anim
         //sound
         yield return new WaitForSeconds(reloadTime);
         anim.SetBool("Reloading", false);
-        //anim
+
         currentAmmo = maxAmmo;
         player.playerSpeed = 1.9f;
         player.playerSprint = 3;
