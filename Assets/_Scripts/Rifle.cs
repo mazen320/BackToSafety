@@ -43,20 +43,26 @@ public class Rifle : MonoBehaviour
             return;
         }
 
-        if (Input.GetButton("Fire1") && Time.time >=nextTimeToShoot)
+        ShotHandler();
+    }
+
+    private void ShotHandler()
+    {
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToShoot)
         {
+
             anim.SetBool("Fire", true);
             anim.SetBool("Idle", false);
             nextTimeToShoot = Time.time + 1f / fireCharge;
             Shoot();
         }
-        else if(Input.GetButton("Fire1") && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-            {
+        else if (Input.GetButton("Fire1") && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
             anim.SetBool("FireWalk", true);
             anim.SetBool("Idle", false);
         }
-        else if(Input.GetButton("Fire2") && Input.GetButton("Fire1"))
-            {
+        else if (Input.GetButton("Fire2") && Input.GetButton("Fire1"))
+        {
             anim.SetBool("Idle", false);
             anim.SetBool("IdleAim", true);
             anim.SetBool("FireWalk", true);
@@ -70,17 +76,18 @@ public class Rifle : MonoBehaviour
             anim.SetBool("Fire", false);
         }
     }
+
     private void Shoot()
     {
         //check the mag
-        if(mag == 0)
+        if (mag == 0)
         {
             //show ammo in text
             return;
         }
         currentAmmo--;
 
-        if(currentAmmo == 0)
+        if (currentAmmo == 0)
         {
             mag--;
         }
@@ -93,7 +100,7 @@ public class Rifle : MonoBehaviour
             Debug.Log(hitInfo.transform.name);
             ShootObject shootObject = hitInfo.transform.GetComponent<ShootObject>();
 
-            if(shootObject != null)
+            if (shootObject != null)
             {
                 shootObject.ObjectHitDamage(damage);
                 GameObject impactShot = Instantiate(ConcreteEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));

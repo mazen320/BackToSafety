@@ -10,7 +10,7 @@ public class ShootObject : MonoBehaviour
     public void ObjectHitDamage(float dmg)
     {
         objectHealth -= dmg;
-        if(objectHealth <= 0f)
+        if (objectHealth <= 0f)
         {
             Die();
         }

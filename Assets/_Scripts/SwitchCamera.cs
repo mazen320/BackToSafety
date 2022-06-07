@@ -10,7 +10,7 @@ public class SwitchCamera : MonoBehaviour
     public GameObject thirdPersonCam;
 
     public Animator anim;
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetButton("Fire2") && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -25,7 +25,7 @@ public class SwitchCamera : MonoBehaviour
             aimCam.SetActive(true);
             aimCanvas.SetActive(true);
         }
-        else if(Input.GetButton("Fire2"))
+        else if (Input.GetButton("Fire2"))
         {
             anim.SetBool("Idle", false);
             anim.SetBool("IdleAim", true);
@@ -49,5 +49,5 @@ public class SwitchCamera : MonoBehaviour
             aimCanvas.SetActive(false);
         }
     }
-    
+
 }

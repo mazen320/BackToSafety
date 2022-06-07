@@ -35,7 +35,7 @@ public class PlayerScript : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(grounded.position, groundDistance, groundMask);
 
-        if(isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
@@ -54,7 +54,7 @@ public class PlayerScript : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontal_axis, 0f, vertical_axis).normalized;
 
-        if(direction.magnitude >= 0.1f)
+        if (direction.magnitude >= 0.1f)
         {
 
             anim.SetBool("Idle", false);
@@ -80,22 +80,22 @@ public class PlayerScript : MonoBehaviour
 
     void Jump()
     {
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             anim.SetBool("Idle", false);
             anim.SetTrigger("Jump");
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity); 
+            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         }
         else
         {
             anim.SetBool("Idle", true);
             anim.ResetTrigger("Jump");
-        }    
+        }
     }
 
     void Sprint()   //same thing from playermove just changed one variable to playersprint
     {
-        if(Input.GetButton("Sprint") && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && isGrounded)
+        if (Input.GetButton("Sprint") && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && isGrounded)
         {
             float horizontal_axis = Input.GetAxisRaw("Horizontal");
             float vertical_axis = Input.GetAxisRaw("Vertical");

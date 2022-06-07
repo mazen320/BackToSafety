@@ -23,7 +23,7 @@ public class RiflePickup : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetButton("Fire1") && Time.time >= nextTimetoPunch)
+        if (Input.GetButton("Fire1") && Time.time >= nextTimetoPunch)
         {
             anim.SetBool("Punch", true);
             anim.SetBool("Idle", false);
